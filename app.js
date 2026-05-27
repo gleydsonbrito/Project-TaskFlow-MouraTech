@@ -65,12 +65,18 @@ addTaskBtn.addEventListener('click', () => {
   //não deve permitir texto em branco
   //cada tarefa é representada por um objeto JSON do tipo
   //cada tarefa inicia como não completada por padrão
-  /* 
+
+  if (taskInput.value.trim() === '') {
+    alert('Por favor, insira uma tarefa válida.');
+    return;
+  }
+
   task = {
-    text: '',
+    text: taskInput.value,
     completed: false
   }
-  */
+
+  tasks.push(task);
   taskInput.value = '';
   renderTasks();
 });
