@@ -58,6 +58,7 @@ function updateCounter() {
   //o objeto 'taskCounter' deve ser atualizado com a quantidade de tasks pendentes
   //deve constar x tarefas pendentes como texto na tela
 
+
 }
 
 addTaskBtn.addEventListener('click', () => {
@@ -93,4 +94,7 @@ filterButtons.forEach(button => {
 themeToggle.addEventListener('click', () => {
   //há uma classe dark já implementada no CSS
   //sua missão é implementar a funcionalidade de ativação desativação do Dark Mode
+
+  document.body.classList.toggle('dark');
+
 });
