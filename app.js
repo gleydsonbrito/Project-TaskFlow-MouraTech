@@ -54,11 +54,8 @@ function renderTasks() {
 }
 
 function updateCounter() {
-  //função para contar tasks pendentes
-  //o objeto 'taskCounter' deve ser atualizado com a quantidade de tasks pendentes
-  //deve constar x tarefas pendentes como texto na tela
-
-
+  const pendingTasks = tasks.filter(task => !task.completed);
+  taskCounter.textContent = `${pendingTasks.length} tarefas pendentes`;
 }
 
 addTaskBtn.addEventListener('click', () => {
