@@ -64,16 +64,18 @@ function updateCounter() {
 }
 
 addTaskBtn.addEventListener('click', () => {
-  //função para adiconar tarefas
-  //não deve permitir texto em branco
-  //cada tarefa é representada por um objeto JSON do tipo
-  //cada tarefa inicia como não completada por padrão
-  /* 
-  task = {
-    text: '',
-    completed: false
+  const taskText = taskInput.value.trim();
+
+  if (taskText === '') {
+    return;
   }
-  */
+
+  const task = {
+    text: taskText,
+    completed: false
+  };
+
+  tasks.push(task);
   taskInput.value = '';
   renderTasks();
 });
