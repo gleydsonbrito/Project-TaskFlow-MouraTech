@@ -54,26 +54,36 @@ function renderTasks() {
 }
 
 function updateCounter() {
-  //função para contar tasks pendentes
-  //o objeto 'taskCounter' deve ser atualizado com a quantidade de tasks pendentes
-  //deve constar x tarefas pendentes como texto na tela
+  const totalTasks = tasks.length;
+  const pendingTasks = tasks.filter(task => !task.completed).length;
 
+  if (totalTasks === 0) {
+    taskCounter.textContent = '0 tarefas';
+  } else if (pendingTasks === 0) {
+    taskCounter.textContent = `${totalTasks} tarefas completas`;
+  } else {
+    taskCounter.textContent = `${pendingTasks} de ${totalTasks} tarefas`;
+  }
 }
 
 addTaskBtn.addEventListener('click', () => {
-  //função para adiconar tarefas
-  //não deve permitir texto em branco
-  //cada tarefa é representada por um objeto JSON do tipo
-  //cada tarefa inicia como não completada por padrão
-  /* 
-  task = {
-    text: '',
-    completed: false
+  const taskText = taskInput.value;
+
+  if (taskText === '') {
+    alert('Por favor, digite uma tarefa!');
+    return;
   }
-  */
+
+  const task = {
+    text: taskText,
+    completed: false
+  };
+
+  tasks.push(task);
   taskInput.value = '';
   renderTasks();
 });
+
 
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -85,10 +95,19 @@ filterButtons.forEach(button => {
     currentFilter = button.dataset.filter;
     renderTasks();
   });
-
 });
 
 themeToggle.addEventListener('click', () => {
-  //há uma classe dark já implementada no CSS
-  //sua missão é implementar a funcionalidade de ativação desativação do Dark Mode
+  document.body.classList.toggle('dark');
+
+  if (document.body.classList.contains('dark')) {
+    localStorage.setItem('theme', 'dark');
+    themeToggle.textContent = 'Light Mode';
+  } else {
+    localStorage.setItem('theme', 'light');
+    themeToggle.textContent = 'Dark Mode';
+  }
 });
+
+loadTheme();
+

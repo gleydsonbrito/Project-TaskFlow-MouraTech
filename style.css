@@ -22,7 +22,7 @@ body {
   background: white;
   padding: 24px;
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 header {
@@ -134,6 +134,7 @@ button:hover {
 /* DARK MODE */
 
 body.dark {
+
   background: #111827;
   color: white;
 }
