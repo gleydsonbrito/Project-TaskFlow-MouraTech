@@ -91,4 +91,11 @@ filterButtons.forEach(button => {
 themeToggle.addEventListener('click', () => {
   //há uma classe dark já implementada no CSS
   //sua missão é implementar a funcionalidade de ativação desativação do Dark Mode
+  if (document.querySelector('body').className != 'dark'){
+    document.querySelector('body').classList.add('dark')
+    themeToggle.textContent = '☀️ Light Mode'
+  } else{
+    document.querySelector('body').classList.remove('dark')
+    themeToggle.textContent = '🌙 Dark Mode'
+  }
 });
