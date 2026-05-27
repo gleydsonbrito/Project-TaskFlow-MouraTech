@@ -75,20 +75,18 @@ addTaskBtn.addEventListener('click', () => {
   renderTasks();
 });
 
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    document
-      .querySelector('.filter-btn.active')
-      .classList
-      .remove('active');
-    button.classList.add('active');
-    currentFilter = button.dataset.filter;
-    renderTasks();
-  });
-
-});
 
 themeToggle.addEventListener('click', () => {
-  //há uma classe dark já implementada no CSS
-  //sua missão é implementar a funcionalidade de ativação desativação do Dark Mode
+  document.body.classList.toggle('dark');
+
+  if (document.body.classList.contains('dark')) {
+    localStorage.setItem('theme', 'dark');
+    themeToggle.textContent = 'Modo Claro';
+  } else {
+    localStorage.setItem('theme', 'light');
+    themeToggle.textContent = 'Modo Escuro';
+  }
 });
+
+loadTheme();
+
