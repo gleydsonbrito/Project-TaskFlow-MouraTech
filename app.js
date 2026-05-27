@@ -74,6 +74,15 @@ addTaskBtn.addEventListener('click', () => {
     completed: false
   }
   */
+
+  const taskText = taskInput.value.trim();
+  if (taskText === '') {
+    return;
+  }
+  tasks.push({
+    text: taskText,
+    completed: false
+  });
   taskInput.value = '';
   renderTasks();
 });
